@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import ResponseDispatcher from '../response_dispatcher/ResponseDispatcher.manager.js';
 import { setupAuthRoutes } from './routes/auth.routes.js';
-import { setupSuperAdminRoutes } from './routes/superadmin.routes.js';
+import { setupSuperAdminRoutes } from './routes/admin.routes.js';
 import { setupSchoolAdminRoutes } from './routes/schoolAdmin.routes.js';
 import { setupSharedRoutes } from './routes/shared.routes.js';
 
