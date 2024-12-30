@@ -2,7 +2,7 @@ import SchoolManager from '../managers/school/School.manager.js';
 import ClassroomManager from '../managers/classroom/Classroom.manager.js';
 import StudentManager from '../managers/student/Student.manager.js';
 import UserManager from '../managers/user/User.manager.js';
-import SchoolServer from '../managers/http/schoolServer.manager.js';
+import SchoolServer from '../managers/http/Server.manager.js';
 import validationMw from '../mws/validation.mw.js';
 import authMw from '../mws/auth.mw.js';
 
