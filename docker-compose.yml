@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: soar_app
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5111:5111"  # User port
+      - "5222:5222"  # Admin port
+    environment:
+      - NODE_ENV=development
+      - USER_PORT=5111
+      - ADMIN_PORT=5222
+      - MONGODB_URI=mongodb://mongodb:27017/soar_assessment
+      - REDIS_URI=redis://redis:6379
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - default
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - default
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - default
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+
+networks:
+    default:
+        name: soar_app_network
