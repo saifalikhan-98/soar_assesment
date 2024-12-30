@@ -9,12 +9,8 @@ services:
     ports:
       - "5111:5111"  # User port
       - "5222:5222"  # Admin port
-    environment:
-      - NODE_ENV=development
-      - USER_PORT=5111
-      - ADMIN_PORT=5222
-      - MONGODB_URI=mongodb://mongodb:27017/soar_assessment
-      - REDIS_URI=redis://redis:6379
+    env_file:
+      - .env
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
